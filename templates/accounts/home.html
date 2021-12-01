@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if user.is_authenticated %}
-    <h1> Hi ,{{user.username}}</h1>
-{% else %}
-    <h1> Hi ,guest</h1>
-{% endif %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Your opinion matters</h1>
+      <p class="lead text-muted">Share you thoughts with us and help us build a better tommorow</p>
+    </div>
+  </section>
 {% endblock content %}
