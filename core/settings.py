@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps
     'accounts.apps.AccountsConfig',
+    'plan.apps.PlanConfig',
+    'survey.apps.SurveyConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -122,6 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# set STATIC_DIR
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(STATIC_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
