@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href={% static 'css/comment.css'%}>
+{% endblock extrahead %}
+    
+
 {% block content %}
 <div class='container'>
     <div class='row'>
@@ -32,6 +38,31 @@
         </div>
             <h1>{{ plan.title }}</h1>
             <p>{{ plan.description }}</p>
+            <div class="container d-flex justify-content-center mt-100 mb-100">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Recent Comments</h4>
+                                <h6 class="card-subtitle">Latest Comments section by users</h6>
+                            </div>
+                            <div class="comment-widgets m-b-20">
+                                {% for comment in comments %}
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><span class="round"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="user" width="50"></span></div>
+                                    <div class="comment-text w-100">
+                                        <h5>{{comment.author.username}}</h5>
+                                        <div class="comment-footer"> <span class="date">{{comment.created_at}}</span>  <span class="action-icons"> <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a> </span> </div>
+                                        <p class="m-b-5 m-t-10">{{comment.body}}</p>
+                                    </div>
+                                </div>
+                             {% endfor %}
+   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
                 <h3>Comments </h3>
                 <p class="text-muted">Add a comment</p>
@@ -43,6 +74,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+            
         </div>
     </div>
 {% endblock content %}
