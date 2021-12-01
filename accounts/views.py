@@ -2,13 +2,16 @@ from django.shortcuts import redirect, render
 from .forms import UserRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
 
 
 def home(request):
     return render(request, 'accounts/home.html')
 
+""" A basic register view that on get displays a blank form,
+    on post processes the form data and displays a 
+    success message """
 def user_register(request):
     form = UserRegistrationForm()
     context = {'form': form}
@@ -16,11 +19,15 @@ def user_register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            messages.add_message(request, messages.SUCCESS, 'User created successfully')
             return redirect('accounts:home')
             
     return render(request, 'accounts/register.html',context)
 
 
+""" A basic login form that on get return blank login form 
+    and on post authenthicates the user and displays message
+"""
 def user_login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -38,4 +45,8 @@ def user_login(request):
         form = AuthenticationForm()
     context = {'form': form}
     return render(request, 'accounts/login.html', context)
-                
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('accounts:home')
