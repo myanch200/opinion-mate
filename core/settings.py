@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'plan.apps.PlanConfig',
     'survey.apps.SurveyConfig',
+    'comment.apps.CommentConfig',
     
 ]
 

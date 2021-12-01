@@ -4,10 +4,12 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
-
+from plan.models import Plan
 
 def home(request):
-    return render(request, 'accounts/home.html')
+    plans = Plan.objects.all()
+    
+    return render(request, 'accounts/home.html' ,{'plans':plans})
 
 """ A basic register view that on get displays a blank form,
     on post processes the form data and displays a 
