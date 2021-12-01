@@ -13,6 +13,8 @@ def home(request):
     on post processes the form data and displays a 
     success message """
 def user_register(request):
+    if request.user.is_authenticated:
+        return redirect('accounts:home')
     form = UserRegistrationForm()
     context = {'form': form}
     if request.method == 'POST':
@@ -20,7 +22,7 @@ def user_register(request):
         if form.is_valid():
             user = form.save()
             messages.add_message(request, messages.SUCCESS, 'User created successfully')
-            return redirect('accounts:home')
+            return redirect('accounts:login')
             
     return render(request, 'accounts/register.html',context)
 
@@ -29,6 +31,8 @@ def user_register(request):
     and on post authenthicates the user and displays message
 """
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('accounts:home')
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
         if form.is_valid():
@@ -49,4 +53,4 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('accounts:home')
+    return redirect('accounts:login')
