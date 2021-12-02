@@ -53,3 +53,12 @@
 .thumbupo {
     color: #17a2b8
 }
+.cta-survey{
+    background-color: #00a5f4;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

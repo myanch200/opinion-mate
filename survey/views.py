@@ -28,6 +28,6 @@ def get_questions(request, survey_id):
     return JsonResponse(data, safe=False)
 
 
-def survey(request, survey_id):
+def take_survey(request, survey_id):
     survey = Survey.objects.get(id=survey_id)
     return render(request, 'survey/survey.html', {'survey': survey})
