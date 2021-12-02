@@ -5,7 +5,7 @@ from plan.models import Plan
 class Servey(models.Model):
     plan = models.OneToOneField(Plan, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
-    patricipants = models.ManyToManyField(User, related_name='participants')
+    patricipants = models.ManyToManyField(User, related_name='participants', null=True, blank=True)
     def __str__(self):
         return f"Servey- {self.plan.title}"
     
