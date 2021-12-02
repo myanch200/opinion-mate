@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Servey,Question, Option , OpenOption , ShortOption
+from .models import Survey,Question, Option 
 
 class ServeyQuestionInline(admin.TabularInline):
     model = Question
@@ -9,15 +9,13 @@ class ServeyQuestionInline(admin.TabularInline):
 class ServeyAdmin(admin.ModelAdmin):
     inlines = [ServeyQuestionInline]
     
-class QuestionNormalOptionInline(admin.TabularInline):
-    model = ShortOption
-    
-class QuestionOpenOptionInline(admin.TabularInline):
-    model = OpenOption
-    
+
+class OptionInline(admin.TabularInline):
+    model = Option
+    extra = 2
+
 class QuestionAdmin(admin.ModelAdmin):
-    
-    inlines = [QuestionNormalOptionInline]
+    inlines = [OptionInline]
 
 admin.site.register(Question,QuestionAdmin)
-admin.site.register(Servey,ServeyAdmin)
+admin.site.register(Survey,ServeyAdmin)

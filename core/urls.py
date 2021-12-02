@@ -10,5 +10,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('plan/', include('plan.urls')),
     path('comment/', include('comment.urls')),
+    path('survey/', include('survey.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

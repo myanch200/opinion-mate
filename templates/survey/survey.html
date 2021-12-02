@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{survey.plan.title}} | Survey</h3>
+                </div>
+            </div>
+            <div id="questionBox">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="{% static 'js/survey.js' %}" type="module"></script>
+{% endblock extra_scripts %}
+
